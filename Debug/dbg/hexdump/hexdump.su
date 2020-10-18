@@ -1,0 +1,3 @@
+hexdump.c:17:13:PrintHex	24	static
+hexdump.c:30:13:PrintDir	24	static
+hexdump.c:54:6:HexDump	64	static
