@@ -149,6 +149,16 @@ int main(void)
   PCF2123_read_register(&my_pcf, PCF2123_REG_SECONDS,
   	&osc_status, 1);
 
+  /* Setting TI_TP to 1 */
+  DBG_println("Setting TI_TP");
+  PCF2123_read_register(&my_pcf, PCF2123_REG_CONTROL_2,
+	&control_2, 1);
+  DBG_println("C2: %x", control_2);
+  control_2 |= PCF2123_TI_TP_INT_PIN_GENERATES_PULSE;
+  DBG_println("C2: %x", control_2);
+  PCF2123_write_register(&my_pcf, PCF2123_REG_CONTROL_2,
+	&control_2, 1);
+
   DBG_println("Osc sts: %x", osc_status);
 
   pcf2123_time_t time = {
